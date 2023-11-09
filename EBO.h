@@ -1,6 +1,4 @@
-#ifndef EBO_CLASS_H
-#define EBO_CLASS_H
-
+#pragma once
 #include<glad/glad.h>
 
 class EBO {
@@ -25,5 +23,3 @@ public:
 		glDeleteBuffers(1, &ID);
 	}
 };
-
-#endif

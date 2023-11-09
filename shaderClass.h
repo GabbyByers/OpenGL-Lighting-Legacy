@@ -1,6 +1,4 @@
-#ifndef SHADER_CLASS_H
-#define SHADER_CLASS_H
-
+#pragma once
 #include<glad/glad.h>
 #include<string>
 #include<fstream>
@@ -48,7 +46,6 @@ public:
 
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
-
 	}
 
 	void Activate() {
@@ -59,4 +56,3 @@ public:
 		glDeleteProgram(ID);
 	}
 };
-#endif
