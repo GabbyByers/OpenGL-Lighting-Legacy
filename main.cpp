@@ -7,8 +7,7 @@
 #include"VBO.h"
 #include"EBO.h"
 
-GLfloat vertices[] =
-{
+GLfloat vertices[] = {
 	-0.5f,     -0.5f * float(sqrt(3)) / 3,     0.0f,
 	 0.5f,     -0.5f * float(sqrt(3)) / 3,     0.0f,
 	 0.0f,      0.5f * float(sqrt(3)) * 2 / 3, 0.0f,
@@ -17,15 +16,13 @@ GLfloat vertices[] =
 	 0.0f,     -0.5f * float(sqrt(3)) / 3,     0.0f
 };
 
-GLuint indices[] =
-{
+GLuint indices[] = {
 	0, 3, 5,
 	3, 2, 4,
 	5, 4, 1
 };
 
-int main()
-{
+int main() {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -49,8 +46,7 @@ int main()
 	VBO1.Unbind();
 	EBO1.Unbind();
 
-	while (!glfwWindowShouldClose(window))
-	{
+	while (!glfwWindowShouldClose(window)) {
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		shaderProgram.Activate();
