@@ -7,8 +7,7 @@
 #include<iostream>
 #include<cerrno>
 
-class Shader
-{
+class Shader {
 public:
 	// Reference ID of the Shader Program
 	GLuint ID;

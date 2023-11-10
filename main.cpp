@@ -13,16 +13,12 @@
 #include"EBO.h"
 #include"Camera.h"
 
-
-
 const unsigned int width = 800;
 const unsigned int height = 800;
 
-
-
 // Vertices coordinates
-GLfloat vertices[] =
-{ //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //
+GLfloat vertices[] = {
+//     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //
 	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,      0.0f, -1.0f, 0.0f, // Bottom side
 	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 0.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
 	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
@@ -56,8 +52,8 @@ GLuint indices[] =
 	13, 15, 14 // Facing side
 };
 
-GLfloat lightVertices[] =
-{ //     COORDINATES     //
+//     COORDINATES     //
+GLfloat lightVertices[] = {
 	-0.1f, -0.1f,  0.1f,
 	-0.1f, -0.1f, -0.1f,
 	 0.1f, -0.1f, -0.1f,
@@ -68,8 +64,7 @@ GLfloat lightVertices[] =
 	 0.1f,  0.1f,  0.1f
 };
 
-GLuint lightIndices[] =
-{
+GLuint lightIndices[] = {
 	0, 1, 2,
 	0, 2, 3,
 	0, 4, 7,
@@ -84,9 +79,7 @@ GLuint lightIndices[] =
 	4, 6, 7
 };
 
-
-int main()
-{
+int main() {
 	// Initialize GLFW
 	glfwInit();
 
@@ -101,8 +94,7 @@ int main()
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
 	GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
 	// Error check if the window fails to create
-	if (window == NULL)
-	{
+	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return -1;
@@ -137,7 +129,6 @@ int main()
 	VBO1.Unbind();
 	EBO1.Unbind();
 
-
 	// Shader for light cube
 	Shader lightShader("light.vert", "light.frag");
 	// Generates Vertex Array Object and binds it
@@ -154,8 +145,6 @@ int main()
 	lightVBO.Unbind();
 	lightEBO.Unbind();
 
-
-
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
@@ -165,7 +154,6 @@ int main()
 	glm::mat4 pyramidModel = glm::mat4(1.0f);
 	pyramidModel = glm::translate(pyramidModel, pyramidPos);
 
-
 	lightShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
 	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
@@ -174,12 +162,9 @@ int main()
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 
-
 	// Original code from the tutorial
 	Texture brickTex("Textures/brick.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	brickTex.texUnit(shaderProgram, "tex0", 0);
-
-
 
 	// Enables the Depth Buffer
 	glEnable(GL_DEPTH_TEST);
@@ -188,8 +173,7 @@ int main()
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
 	// Main while loop
-	while (!glfwWindowShouldClose(window))
-	{
+	while (!glfwWindowShouldClose(window)) {
 		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		// Clean the back buffer and depth buffer
@@ -199,7 +183,6 @@ int main()
 		camera.Inputs(window);
 		// Updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
 
 		// Tells OpenGL which Shader Program we want to use
 		shaderProgram.Activate();
@@ -214,8 +197,6 @@ int main()
 		// Draw primitives, number of indices, datatype of indices, index of indices
 		glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
-
-
 		// Tells OpenGL which Shader Program we want to use
 		lightShader.Activate();
 		// Export the camMatrix to the Vertex Shader of the light cube
@@ -225,14 +206,11 @@ int main()
 		// Draw primitives, number of indices, datatype of indices, index of indices
 		glDrawElements(GL_TRIANGLES, sizeof(lightIndices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
-
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
 		glfwPollEvents();
 	}
-
-
 
 	// Delete all the objects we've created
 	VAO1.Delete();

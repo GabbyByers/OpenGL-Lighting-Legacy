@@ -22,8 +22,7 @@ uniform vec3 lightPos;
 // Gets the position of the camera from the main function
 uniform vec3 camPos;
 
-void main()
-{
+void main() {
 	// ambient lighting
 	float ambient = 0.20f;
 

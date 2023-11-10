@@ -16,16 +16,22 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{a7ffa985-40f1-492c-85aa-5c3f1e35fbf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Misc">
+      <UniqueIdentifier>{e1506e87-dbf9-4e1a-9c62-07bc943a1211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{7c923b41-0a88-449d-aad6-780e7ec7fe32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stb.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Resource Files\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,5 +67,10 @@
     <None Include="light.vert">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\brick.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

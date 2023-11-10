@@ -10,8 +10,7 @@
 
 #include"shaderClass.h"
 
-class Camera
-{
+class Camera {
 public:
 	// Stores the main vectors of the camera
 	glm::vec3 Position;

@@ -5,8 +5,7 @@
 
 #include"shaderClass.h"
 
-class Texture
-{
+class Texture {
 public:
 	GLuint ID;
 	GLenum type;

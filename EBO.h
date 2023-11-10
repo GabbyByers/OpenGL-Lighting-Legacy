@@ -1,10 +1,8 @@
-#ifndef EBO_CLASS_H
-#define EBO_CLASS_H
+#pragma once
 
 #include<glad/glad.h>
 
-class EBO
-{
+class EBO {
 public:
 	// ID reference of Elements Buffer Object
 	GLuint ID;
@@ -31,5 +29,3 @@ public:
 		glDeleteBuffers(1, &ID);
 	}
 };
-
-#endif
